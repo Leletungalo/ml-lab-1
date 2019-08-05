@@ -15,7 +15,8 @@ namespace NGLLEL001{
         double calculateMean(std::vector<double> oriVector);
         void adjestData();
         double calculateCovernce(std::vector<double> junu, std::vector<double> jul);
-        void matrix();
+        double matrix();
+        void calculateLamnda(double arr[2][2]);
         void testMatrix();
         void readData();
         ~principal();

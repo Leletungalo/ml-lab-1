@@ -3,6 +3,8 @@
 #include "fstream"
 #include "vector"
 #include "sstream"
+#include <math.h>
+#include "armadillo"
 
 using namespace NGLLEL001;
 using namespace std;
@@ -58,7 +60,7 @@ double principal::calculateCovernce(vector<double> junu,vector<double> jul){
     return sum / (junu.size() - 2);
 }
 
-void principal::matrix(){
+double principal::matrix(){
     double meanForJunuary = principal::calculateMean(junuary);
     double meanForJuly = principal::calculateMean(july);
     for(int i = 0; i < junuary.size() ; i++){
@@ -68,13 +70,43 @@ void principal::matrix(){
     double janJan = principal::calculateCovernce(adujustedJunuary,adujustedJunuary);
     double janJul =  principal::calculateCovernce(adujustedJunuary,adujustedJuly);
     double julyJuly = principal::calculateCovernce(adujustedJuly,adujustedJuly);
-    double cov[2][2];
 
-    cov[1][2] = janJul;
-    cov[2][1] = janJul;
+    arma::cx_mat A(2,2);
+    A.at(0,0) = janJan;
+    A.at(0,1) = janJul;
+    A.at(1,0) = janJul;
+    A.at(1,1) = julyJuly;
 
-  //  cout << cov[2][1] << endl;
+    arma::cx_vec egival;
+    arma::cx_mat egivec;
+
+    //arma::eig_gen(egival,egivec,A);
+    //cout << A << endl;
+
+    double covMatrix[2][2] = {{janJan,janJul},{janJul,julyJuly}};
+    principal::calculateLamnda(covMatrix);
+    return 0;
 }
+
+void principal::calculateLamnda(double arr[2][2]){
+    double thrid = arr[0][1] * arr[1][0];
+    double last = arr[0][0] * arr[1][1];
+    double lastThrid = last - thrid;
+    double midTerm = arr[0][0] - arr[1][1];
+    double tempMid = midTerm;
+    midTerm = pow(midTerm,2);
+    double x4 = 4 * (lastThrid);
+    double sqr = sqrt(midTerm - x4);
+    
+    double lamnda = tempMid - sqr;
+    lamnda = lamnda / 2;
+
+    double lammda2 = tempMid + sqr;
+    lammda2 = lammda2 / 2;
+    cout << lamnda << endl;
+    cout << lammda2 << endl;
+}
+
 void principal::testMatrix(){
      /*  int height[] = {9,15,25,14,10,18,0,16,5,19,16,20};
     int mark[] =   {39,56,93,61,50,75,32,85,42,70,66,80};
@@ -94,6 +126,20 @@ void principal::testMatrix(){
 
     double mama =  principal::calculateCovernce(adjustedArrJan,adujustedArrJul);
     
+
+    arma::cx_mat A(2,2);
+    A.at(0,0) = janJan;
+    A.at(0,1) = janJul;
+    A.at(1,0) = janJul;
+    A.at(1,1) = julyJuly;
+
+    arma::cx_vec egival;
+    arma::cx_mat egivec;
+
+   // arma::eig_gen(egival,egivec,A);
+    cout << A << endl;
+
+
     cout << mama << endl;*/
 }
 

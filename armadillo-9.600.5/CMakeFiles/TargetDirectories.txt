@@ -1,0 +1,7 @@
+/home/leletu/csc 3022h/Michine Learning/armadillo-9.600.5/CMakeFiles/install/strip.dir
+/home/leletu/csc 3022h/Michine Learning/armadillo-9.600.5/CMakeFiles/install/local.dir
+/home/leletu/csc 3022h/Michine Learning/armadillo-9.600.5/CMakeFiles/edit_cache.dir
+/home/leletu/csc 3022h/Michine Learning/armadillo-9.600.5/CMakeFiles/armadillo.dir
+/home/leletu/csc 3022h/Michine Learning/armadillo-9.600.5/CMakeFiles/rebuild_cache.dir
+/home/leletu/csc 3022h/Michine Learning/armadillo-9.600.5/CMakeFiles/list_install_components.dir
+/home/leletu/csc 3022h/Michine Learning/armadillo-9.600.5/CMakeFiles/install.dir
